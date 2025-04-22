@@ -23,7 +23,7 @@ mongoose.connect(config).then(() => {
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin: "*"}));
+app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
 
 app.listen(8000, () => {
@@ -33,6 +33,10 @@ app.listen(8000, () => {
 
 app?.get("/", (req, res) => {
   res.status(200).json({ message: "Welcome to Travel Agency API" });
+});
+
+app.get("/favicon.png", (req, res) => {
+  res.sendFile(path.join(__dirname, "favicon.png"));
 });
 
 //Swagger Docs for creating an account
